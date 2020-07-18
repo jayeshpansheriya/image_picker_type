@@ -1,4 +1,4 @@
-library flutter_image_picker;
+library image_picker_helper;
 
 import 'dart:io';
 

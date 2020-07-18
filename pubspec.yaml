@@ -1,7 +1,7 @@
-name: flutter_image_picker
+name: image_picker_helper
 description: A new Flutter package.
 version: 0.0.1
-author:
+#author:
 homepage: https://github.com/jayeshpansheriya/flutter_image_picker
 
 environment:
