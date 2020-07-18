@@ -1,6 +1,53 @@
-# flutter_image_picker
+# flutter_image_picker plugin for Flutter
 
-A new Flutter package.
+A Flutter plugin for iOS and Android for picking images from the image library,
+and taking new pictures with the camera.
+
+## Installation
+
+First, add `flutter_image_picker`.
+
+### iOS
+
+Add the following keys to your _Info.plist_ file, located in `<project root>/ios/Runner/Info.plist`:
+
+* `NSPhotoLibraryUsageDescription` - describe why your app needs permission for the photo library. This is called _Privacy - Photo Library Usage Description_ in the visual editor.
+* `NSCameraUsageDescription` - describe why your app needs access to the camera. This is called _Privacy - Camera Usage Description_ in the visual editor.
+* `NSMicrophoneUsageDescription` - describe why your app needs access to the microphone, if you intend to record videos. This is called _Privacy - Microphone Usage Description_ in the visual editor.
+
+### Android
+
+#### API 29+
+No configuration required - the plugin should work out of the box.
+
+#### API < 29
+
+Add `android:requestLegacyExternalStorage="true"` as an attribute to the `<application>` tag in AndroidManifest.xml. The [attribute](https://developer.android.com/training/data-storage/compatibility) is `false` by default on apps targeting Android Q.
+
+
+### Example
+
+``` dart
+// show bottom sheet to select image option
+showModalBottomSheet<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return ImagePickerHelper(
+        isCropped: true,
+        size: Size(300, 300),
+        onDone: (file) {
+          if (file == null) {
+            print(null);
+          } else {
+           setState(() {
+                 File file = file;
+            });
+          }
+        },
+      );
+    });
+```
+
 
 ## Getting Started
 

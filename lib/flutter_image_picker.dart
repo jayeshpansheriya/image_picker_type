@@ -85,4 +85,5 @@ class ImagePickerHelper extends StatelessWidget {
           ));
     });
   }
+
 }
