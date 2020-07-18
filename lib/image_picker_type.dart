@@ -1,4 +1,4 @@
-library image_picker_help;
+library image_picker_type;
 
 import 'dart:io';
 
