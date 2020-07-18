@@ -5,7 +5,7 @@ and taking new pictures with the camera.
 
 ## Installation
 
-First, add `flutter_image_picker`.
+First, add `image_picker_type`.
 
 ### iOS
 
