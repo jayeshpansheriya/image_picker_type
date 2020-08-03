@@ -48,7 +48,7 @@ showModalBottomSheet<void>(
     });
 ```
 
-
+![example](https://github.com/jayeshpansheriya/image_picker_type/blob/master/android_demo.gif)
 ## Getting Started
 
 This project is a starting point for a Dart
