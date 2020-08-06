@@ -1,7 +1,6 @@
 # image_picker_type plugin for Flutter
 
-A Flutter plugin for iOS and Android for picking images from the image library,
-and taking new pictures with the camera or galary and crop it.
+A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera or gallery and crop it.
 
 ## Features
 
