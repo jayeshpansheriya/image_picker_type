@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         context: context,
                         builder: (BuildContext context) {
                           return ImagePickerHelper(
-                            isCropped: true,
+                            // isSave: true,  //if you want to save image in directory
                             size: Size(300, 300),
                             onDone: (file) {
                               if (file == null) {
