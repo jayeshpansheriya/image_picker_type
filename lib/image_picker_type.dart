@@ -10,11 +10,11 @@ enum ImagePickerType { GALLERY, CAMERA }
 
 class ImagePickerHelper extends StatelessWidget {
 
-  const ImagePickerHelper({Key key, this.onDone, this.isCropped, this.size})
+  const ImagePickerHelper({Key key, this.onDone, this.isSave = false, this.size})
       : super(key: key);
 
   final Function(File) onDone;
-  final bool isCropped;
+  final bool isSave;
   final Size size;
 
 
@@ -28,8 +28,15 @@ class ImagePickerHelper extends StatelessWidget {
             title: new Text('Gallery '),
             onTap: () async {
               getCroppedImage(ImagePickerType.GALLERY, size.height, size.width)
-                  .then((img) {
+                  .then((img) async {
                 Navigator.pop(context);
+                 if (!Directory("/storage/emulated/0/Images")
+                .existsSync()) {
+              Directory("/storage/emulated/0/Images")
+                  .createSync(recursive: true);
+            }
+                  // copy the file to a new path
+                  final File newImage = await img.copy('/storage/emulated/0/Images/${DateTime.now().toString()}.png');
                 onDone(img);
               });
             },
@@ -38,8 +45,16 @@ class ImagePickerHelper extends StatelessWidget {
             title: new Text('Camera'),
             onTap: () async {
               getCroppedImage(ImagePickerType.CAMERA, size.height, size.width)
-                  .then((img) {
+                  .then((img) async {
                 Navigator.pop(context);
+                if (!Directory("/storage/emulated/0/Images")
+                .existsSync()) {
+              Directory("/storage/emulated/0/Images")
+                  .createSync(recursive: true);
+            }
+                  // copy the file to a new path
+                  final File newImage = await img.copy('/storage/emulated/0/Images/${DateTime.now().toString()}.png');
+               
                 onDone(img);
               });
             },
