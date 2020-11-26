@@ -1,4 +1,8 @@
+## [0.0.4] - TODO: Add release date.
+
+* update Image Picker and Crop Library
+
+
 ## [0.0.3] - TODO: Add release date.
 
-
-* ADD: Add Example and readme file
+* Add Example and readme file
