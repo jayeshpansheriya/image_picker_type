@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  File _image;
+  late File _image;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.black12,
                   height: 300.0,
                   width: 900.0,
+                  // ignore: unnecessary_null_comparison
                   child: _image == null
                       ? Text("Still waiting!")
                       : Image.file(_image),
                 ),
-                FlatButton(
-                  color: Colors.deepOrangeAccent,
+                TextButton(
+                  //color: Colors.deepOrangeAccent,
                   child: Text(
                     "Select Image",
                     style: TextStyle(color: Colors.white),

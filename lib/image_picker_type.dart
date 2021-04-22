@@ -9,9 +9,10 @@ import 'package:image_picker/image_picker.dart';
 enum ImagePickerType { GALLERY, CAMERA }
 
 class ImagePickerHelper extends StatelessWidget {
-  const ImagePickerHelper({Key key, this.onDone, this.size}) : super(key: key);
+  const ImagePickerHelper({Key? key, required this.onDone, required this.size})
+      : super(key: key);
 
-  final Function(File) onDone;
+  final Function(File?) onDone;
   final Size size;
 
   @override
@@ -26,7 +27,7 @@ class ImagePickerHelper extends StatelessWidget {
               getCroppedImage(ImagePickerType.GALLERY, size.height, size.width)
                   .then((img) async {
                 Navigator.pop(context);
-                onDone(img);
+                onDone(img!);
               });
             },
           ),
@@ -36,7 +37,7 @@ class ImagePickerHelper extends StatelessWidget {
               getCroppedImage(ImagePickerType.CAMERA, size.height, size.width)
                   .then((img) async {
                 Navigator.pop(context);
-                onDone(img);
+                onDone(img!);
               });
             },
           ),
@@ -52,7 +53,7 @@ class ImagePickerHelper extends StatelessWidget {
     );
   }
 
-  Future<File> getCroppedImage(
+  Future<File?> getCroppedImage(
       ImagePickerType type, double height, double width) async {
     final picker = ImagePicker();
 
@@ -63,7 +64,7 @@ class ImagePickerHelper extends StatelessWidget {
                 : ImageSource.gallery)
         .then((img) {
       return ImageCropper.cropImage(
-          sourcePath: img.path,
+          sourcePath: img!.path,
           maxHeight: height.toInt(),
           maxWidth: width.toInt(),
           aspectRatio: CropAspectRatio(

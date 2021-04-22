@@ -1,3 +1,7 @@
+## [1.0.0] - TODO: Add release date.
+
+* update Image Picker and Crop Library with null safty
+
 ## [0.0.4] - TODO: Add release date.
 
 * update Image Picker and Crop Library
