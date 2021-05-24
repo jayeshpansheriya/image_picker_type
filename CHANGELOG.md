@@ -1,4 +1,4 @@
-## [1.0.0]
+## [0.0.1]
 
 * update Image Picker and Crop Library with null safty
 
