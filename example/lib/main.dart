@@ -60,19 +60,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     showModalBottomSheet<void>(
                         context: context,
                         builder: (BuildContext context) {
-                          return ImagePickerHelper(
-                            // isSave: true,  //if you want to save image in directory
-                            size: Size(300, 300),
-                            onDone: (file) {
-                              if (file == null) {
-                                print(null);
-                              } else {
-                                setState(() {
-                                  _image = file;
-                                });
-                              }
-                            },
-                          );
+                          return SafeArea(
+                            child: ImagePickerHelper(
+                              // isSave: true,  //if you want to save image in directory
+                              size: Size(300, 300),
+                              onDone: (file) {
+                                if (file == null) {
+                                  print(null);
+                                } else {
+                                  setState(() {
+                                    _image = file;
+                                  });
+                                }
+                              },
+                            ),
+                          );/// If you dont want to safe area you can remove it
                         });
                   },
                 ),
