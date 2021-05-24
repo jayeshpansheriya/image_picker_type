@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late File _image;
+   File? _image;
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   // ignore: unnecessary_null_comparison
                   child: _image == null
                       ? Text("Still waiting!")
-                      : Image.file(_image),
+                      : Image.file(_image!),
                 ),
                 TextButton(
                   //color: Colors.deepOrangeAccent,
                   child: Text(
                     "Select Image",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.blue),
                   ),
                   onPressed: () {
                     // show bottom sheet to select image option

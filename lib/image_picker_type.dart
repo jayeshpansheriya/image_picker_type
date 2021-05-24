@@ -55,7 +55,7 @@ class ImagePickerHelper extends StatelessWidget {
 
   Future<File?> getCroppedImage(
       ImagePickerType type, double height, double width) async {
-    final picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
 
     return picker
         .getImage(
