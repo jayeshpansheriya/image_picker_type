@@ -58,7 +58,7 @@ class ImagePickerHelper extends StatelessWidget {
     final ImagePicker picker = ImagePicker();
 
     return picker
-        .getImage(
+        .pickImage(
             source: type == ImagePickerType.CAMERA
                 ? ImageSource.camera
                 : ImageSource.gallery)
