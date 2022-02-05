@@ -1,6 +1,6 @@
 name: image_picker_type
 description: A Flutter plugin for iOS and Android for picking images from the image library and crop it.
-version: 1.0.3
+version: 1.0.4
 #author:
 homepage: https://github.com/jayeshpansheriya/image_picker_type
 
