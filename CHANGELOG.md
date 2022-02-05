@@ -1,3 +1,6 @@
+## [1.0.4]
+* update library
+
 ## [1.0.3]
 * update library
 
