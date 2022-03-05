@@ -9,11 +9,18 @@ import 'package:image_picker/image_picker.dart';
 enum ImagePickerType { GALLERY, CAMERA }
 
 class ImagePickerHelper extends StatelessWidget {
-  const ImagePickerHelper({Key? key, required this.onDone, required this.size})
+  const ImagePickerHelper(
+      {Key? key,
+      required this.onDone,
+      required this.size,
+      this.androidUiSettings,
+      this.iosUiSettings})
       : super(key: key);
 
   final Function(File?) onDone;
   final Size size;
+  final AndroidUiSettings? androidUiSettings;
+  final IOSUiSettings? iosUiSettings;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +31,7 @@ class ImagePickerHelper extends StatelessWidget {
           new ListTile(
             title: new Text('Gallery '),
             onTap: () async {
-              getCroppedImage(ImagePickerType.GALLERY, size.height, size.width)
-                  .then((img) async {
+              getCroppedImage(ImagePickerType.GALLERY).then((img) async {
                 Navigator.pop(context);
                 onDone(img!);
               });
@@ -34,8 +40,7 @@ class ImagePickerHelper extends StatelessWidget {
           new ListTile(
             title: new Text('Camera'),
             onTap: () async {
-              getCroppedImage(ImagePickerType.CAMERA, size.height, size.width)
-                  .then((img) async {
+              getCroppedImage(ImagePickerType.CAMERA).then((img) async {
                 Navigator.pop(context);
                 onDone(img!);
               });
@@ -53,8 +58,7 @@ class ImagePickerHelper extends StatelessWidget {
     );
   }
 
-  Future<File?> getCroppedImage(
-      ImagePickerType type, double height, double width) async {
+  Future<File?> getCroppedImage(ImagePickerType type) async {
     final ImagePicker picker = ImagePicker();
 
     return picker
@@ -63,24 +67,26 @@ class ImagePickerHelper extends StatelessWidget {
                 ? ImageSource.camera
                 : ImageSource.gallery)
         .then((img) {
-      return ImageCropper.cropImage(
+      return ImageCropper().cropImage(
           sourcePath: img!.path,
-          maxHeight: height.toInt(),
-          maxWidth: width.toInt(),
+          maxHeight: size.height.toInt(),
+          maxWidth: size.width.toInt(),
           aspectRatio: CropAspectRatio(
-              ratioX: height.toDouble(), ratioY: width.toDouble()),
+              ratioX: size.height.toDouble(), ratioY: size.width.toDouble()),
           aspectRatioPresets: [
             CropAspectRatioPreset.square,
           ],
-          androidUiSettings: AndroidUiSettings(
-              toolbarTitle: 'Cropper',
-              toolbarColor: Colors.deepOrange,
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: false),
-          iosUiSettings: IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ));
+          androidUiSettings: androidUiSettings ??
+              AndroidUiSettings(
+                  toolbarTitle: 'Cropper',
+                  toolbarColor: Colors.deepOrange,
+                  toolbarWidgetColor: Colors.white,
+                  initAspectRatio: CropAspectRatioPreset.original,
+                  lockAspectRatio: false),
+          iosUiSettings: iosUiSettings ??
+              IOSUiSettings(
+                minimumAspectRatio: 1.0,
+              ));
     });
   }
 }

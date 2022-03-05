@@ -1,3 +1,7 @@
+## [1.0.6]
+* update library
+* add android and ios UI settings parameter 
+
 ## [1.0.5]
 * update library
 
