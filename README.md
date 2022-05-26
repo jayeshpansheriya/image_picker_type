@@ -6,6 +6,7 @@ A Flutter plugin for iOS and Android for picking images from the image library, 
 
 - [X] iOS Support
 - [X] Android Support
+- [X] Web Support
 
 ## Installation
 
@@ -42,6 +43,22 @@ No configuration required - the plugin should work out of the box.
 
 Add `android:requestLegacyExternalStorage="true"` as an attribute to the `<application>` tag in AndroidManifest.xml. The [attribute](https://developer.android.com/training/data-storage/compatibility) is `false` by default on apps targeting Android Q.
 
+
+### Web
+- Add following codes inside `<head>` tag in file `web/index.html`:
+
+```html
+<head>
+  ....
+
+  <!-- Croppie -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+
+  ....
+</head>
+```
 
 ### Example
 

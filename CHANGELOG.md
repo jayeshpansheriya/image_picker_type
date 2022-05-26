@@ -1,3 +1,7 @@
+## [1.1.0]
+* update library
+* add `Web` support
+
 ## [1.0.6]
 * update library
 * add android and ios UI settings parameter 

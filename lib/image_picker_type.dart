@@ -33,7 +33,7 @@ class ImagePickerHelper extends StatelessWidget {
             onTap: () async {
               getCroppedImage(ImagePickerType.GALLERY).then((img) async {
                 Navigator.pop(context);
-                onDone(img!);
+                onDone(File(img!.path));
               });
             },
           ),
@@ -42,7 +42,7 @@ class ImagePickerHelper extends StatelessWidget {
             onTap: () async {
               getCroppedImage(ImagePickerType.CAMERA).then((img) async {
                 Navigator.pop(context);
-                onDone(img!);
+                onDone(File(img!.path));
               });
             },
           ),
@@ -58,7 +58,7 @@ class ImagePickerHelper extends StatelessWidget {
     );
   }
 
-  Future<File?> getCroppedImage(ImagePickerType type) async {
+  Future<CroppedFile?> getCroppedImage(ImagePickerType type) async {
     final ImagePicker picker = ImagePicker();
 
     return picker
@@ -76,17 +76,19 @@ class ImagePickerHelper extends StatelessWidget {
           aspectRatioPresets: [
             CropAspectRatioPreset.square,
           ],
-          androidUiSettings: androidUiSettings ??
-              AndroidUiSettings(
-                  toolbarTitle: 'Cropper',
-                  toolbarColor: Colors.deepOrange,
-                  toolbarWidgetColor: Colors.white,
-                  initAspectRatio: CropAspectRatioPreset.original,
-                  lockAspectRatio: false),
-          iosUiSettings: iosUiSettings ??
-              IOSUiSettings(
-                minimumAspectRatio: 1.0,
-              ));
+          uiSettings: [
+            androidUiSettings ??
+                AndroidUiSettings(
+                    toolbarTitle: 'Cropper',
+                    toolbarColor: Colors.deepOrange,
+                    toolbarWidgetColor: Colors.white,
+                    initAspectRatio: CropAspectRatioPreset.original,
+                    lockAspectRatio: false),
+            iosUiSettings ??
+                IOSUiSettings(
+                  minimumAspectRatio: 1.0,
+                )
+          ]);
     });
   }
 }
