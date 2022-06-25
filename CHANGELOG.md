@@ -1,5 +1,8 @@
 ## [1.1.0]
 * update library
+
+## [1.1.0]
+* update library
 * add `Web` support
 
 ## [1.0.6]
