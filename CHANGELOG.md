@@ -1,3 +1,6 @@
+## [1.1.2]
+* update library
+
 ## [1.1.1]
 * update library
 
