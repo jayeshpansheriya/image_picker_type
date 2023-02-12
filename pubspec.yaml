@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker: ^0.8.5+3
-  image_cropper: ^2.0.3
+  image_cropper: ^3.0.1
 
 dev_dependencies:
   flutter_test:
